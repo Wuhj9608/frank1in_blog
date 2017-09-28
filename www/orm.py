@@ -27,6 +27,13 @@ async def create_pool(loop, **kw):
     )
 
 
+async def close_pool():
+    logging.info('close database connection pool...')
+    global __pool
+    __pool.close()
+    await __pool.wait_closed()
+
+
 async def select(sql, args, size=None):
     log(sql, args)
     global __pool

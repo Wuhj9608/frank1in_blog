@@ -127,18 +127,42 @@ def datetime_filter(t):
     return u'%s年%s月%s日' % (dt.year, dt.month, dt.day)
 
 
+def date_filter(t):
+    dt = datetime.fromtimestamp(t)
+    return u'%s-%s-%s' % (dt.year, dt.month, dt.day)
+
+
+async def on_close(app):
+    await orm.close_pool()
+
 async def init(loop):
+    rs = dict()
     await orm.create_pool(loop=loop, **configs.db)
     app = web.Application(loop=loop, middlewares=[
         logger_factory, auth_factory, response_factory
     ])
-    init_jinja2(app, filters=dict(datetime=datetime_filter))
+    app.on_shutdown.append(on_close)
+    init_jinja2(app, filters=dict(datetime=datetime_filter, date=date_filter))
     add_routes(app, 'handlers')
     add_static(app)
+    handler = app.make_handler()
     srv = await loop.create_server(app.make_handler(), '127.0.0.1', 9000)
     logging.info('server started at http://127.0.0.1:9000...')
-    return srv
+    rs['app'] = app
+    rs['srv'] = srv
+    rs['handler'] = handler
+    return rs
 
 loop = asyncio.get_event_loop()
-loop.run_until_complete(init(loop))
-loop.run_forever()
+rs = loop.run_until_complete(init(loop))
+try:
+    loop.run_forever()
+except KeyboardInterrupt:
+    logging.info('Exit server by manual')
+finally:
+    rs['srv'].close()
+    loop.run_until_complete(rs['srv'].wait_closed())
+    loop.run_until_complete(rs['app'].shutdown())
+    loop.run_until_complete(rs['handler'].finish_connections(60.0))
+    loop.run_until_complete(rs['app'].cleanup())
+loop.close()
