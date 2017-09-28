@@ -80,7 +80,7 @@ async def index(*, page='1'):
         'page': page,
         'blogs': blogs
     }
-
+##
 
 @get('/blog/{id}')
 async def get_blog(id):
@@ -88,7 +88,8 @@ async def get_blog(id):
     comments = await Comment.find_all('blog_id=?', [id], orderBy='created_at desc')
     for c in comments:
         c.html_content = text2html(c.content)
-    blog.html_content = markdown2.markdown(blog.content)
+    blog.html_content = markdown2.markdown(blog.content,
+                                           extras=['code-friendly', 'fenced-code-blocks', 'footnotes', 'spoiler', 'tables'])
     return {
         '__template__': 'blog.html',
         'blog': blog,
