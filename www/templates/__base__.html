@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
     <title>{% block title %} ? {% endblock %} - 无墨</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/github_markdown.css">
     <link rel="stylesheet" href="/static/css/frank1in_blog.css">
-    <script src="/static/"
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/static/js/jquery-3.2.1.js"></script>
+    <script src="/static/js/sha1.min.js"></script>
+    <script src="/static/js/awesome.js"></script>
+    <script src="/static/js/vue.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!--script src="https://use.fontawesome.com/2e713d1946.js"></script-->
 
@@ -26,6 +27,7 @@
         padding-top: 70px;
       }
     </style>
+      {% block beforehead %}{% endblock %}
   </head>
 
   <body style="background-color:#f0f5f5">
@@ -41,7 +43,7 @@
                 display:block;
                 position:absolute;
                 top:17px;">
-        <a href="#"  style="color:#555555;
+        <a href="/"  style="color:#555555;
                 text-decoration:none;
                 line-height:1;
                 -webkit-font-smoothing:antialiased;
@@ -67,10 +69,11 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">博客</a></li>
+          <li class="active"><a href="/">博客</a></li>
           <li><a href="#">实验室</a></li>
-          <li><a href="#">关于</a></li>
-          <li><a href="#">源码</a></li>
+          <li><a href="/blog/00150686195861636a2497fc6bc4ad2b8b424b604fd7078000">关于</a></li>
+          <li><a href="https://github.com/Wuhj9608/frank1in_blog" target="_blank">源码</a></li>
+          <li><a href="/manage/blogs">后台</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#"><span class="glyphicon glyphicon-user">登录</span></a></li>
@@ -102,6 +105,7 @@
           <div class="frank1in-list"><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a></div>
           <div class="frank1in-list"><a href="https://www.w3shools.com" target="_blank">W3schools</a></div>
           <div class="frank1in-list"><a href="https://github.com/" target="_blank">Github</a></div>
+          <div class="frank1in-list"><a href="https://vuejs.org/" target="_blank">Vue.js</a></div>
         </div>
       </div>
     </div>
