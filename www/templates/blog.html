@@ -5,34 +5,27 @@
 {% block content %}
 
     <!-- Page Header -->
-{% if blog.bg_image %}
-    <header class="masthead" style="background-image: url('{{ blog.bg_image }}')">
-{% else %}
-    <header class="masthead" style="background-image: url('/static/img/home-bg.jpg')">
-{% endif %}
-      <div class="container">
+    <header class="frank1in-blog-header">
         <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="post-heading">
-              <h1>{{ blog.name }}</h1>
-              <span class="meta">{{ blog.user_name }} 发表于 {{ blog.created_at|datetime }}</span>
+          <div class="col-sm-12 col-lg-12 col-md-12 mx-auto">
+            <div class="frank1in-blog-title markdown-body">
+              <p class="frank1in-title-name">{{ blog.name }}</p>
+                <span class="frank1in-title-date"><a href="#">{{ blog.user_name }}</a> 发表于 {{ blog.created_at|datetime }}</span>
             </div>
           </div>
         </div>
-      </div>
     </header>
 
     <!-- Post Content -->
     <article>
-      <div class="container">
         <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto ">
+          <div class="col-sm-12 col-lg-12 col-md-12 mx-auto ">
               <div class="markdown-body">
-              <p>{{ blog.html_content|safe }}</p>
+                  <hr />
+                  <p>{{ blog.html_content|safe }}</p>
               </div>
           </div>
         </div>
-      </div>
     </article>
 
     <hr>

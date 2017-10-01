@@ -13,11 +13,6 @@
   line-height: 1.5;
   word-wrap: break-word;
 }
-.post-meta {
-  word-break: normal;
-  content: normal;
-  word-wrap: normal;
-}
 .markdown-body .pl-c {
   color: #6a737d;
 }

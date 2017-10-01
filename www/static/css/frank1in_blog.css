@@ -1,0 +1,106 @@
+.frank1in-right{float:right!important}
+.frank1in-hide-small{display:none!important}
+.frank1in-wide{letter-spacing:5px}
+.frank1in-main {
+    margin: 0 0 64px 0;
+    border: 1px solid #dddddd;
+}
+.frank1in-sidebar {
+    text-align: center;
+    background:#f0f5f5;
+    margin: 0 0 0 0;
+}
+.frank1in-sidebar-module{
+    background:#ffffff;
+    padding: 15px;
+    margin: 0 0 32px 0;
+    border: 1px solid #dddddd;
+}
+.frank1in-footer {
+    background: #e1e1ea;
+    padding: 40px 0;
+    color: #999;
+    text-align: center;
+    border-top: 1px solid #dddddd;
+}
+.frank1in-blog-title {
+
+}
+.frank1in-title-name {
+    padding-left: 12px;
+    font-size: 40px;
+}
+.frank1in-title-date {
+    float: right;
+    padding-right: 32px;
+    font-size:12px;
+    line-height:18px;
+    color:#999
+}
+.frank1in-panel-title {
+    margin-top:0;
+    margin-bottom:15px;
+    font-size:18px;
+    line-height:24px;
+    font-weight:400;
+    text-transform:none;
+    color:#444
+}
+.frank1in-list {
+    border-top: 1px solid #ddd;
+    padding-top: 8px;
+    margin-top: 8px;
+}
+article {
+    padding: 12px;
+}
+/* override */
+pre {
+    display:block;
+    padding:0px;
+    margin:0 0 10px;
+    font-size:13px;
+    line-height:1.42857143;
+    color:#333;
+    word-break:break-all;
+    word-wrap:break-word;
+    background-color:#f5f5f5;
+    border-radius:4px;
+    page-break-inside:avoid;
+}
+pre code {
+    padding:0;
+    font-size:inherit;
+    color: inherit;
+    white-space:pre-wrap;
+    background-color:transparent;
+    border-radius:0
+}
+code {
+    padding:2px 4px;
+    font-size:90%;
+    color:#c7254e;
+    background-color:#f9f2f4;
+    border-radius:4px
+}
+
+@media (max-width:920px) {
+    .toptext {
+        width: 100%;
+        text-align: center;
+    }
+}
+@media screen and (max-width:768px) {
+    .toptext {
+        display:none
+    }
+}
+@media screen and (min-width: 768px) {
+    .frank1in-sidebar {
+        float: right;
+        margin-left: -64px;
+    }
+    .frank1in-sidebar-module {
+        margin-left: -64px;
+    }
+}

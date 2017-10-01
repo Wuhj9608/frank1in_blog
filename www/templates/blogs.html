@@ -11,32 +11,28 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          {% for blog in blogs %}
-          <div class="post-preview">
-            <a href="/blog/{{ blog.id }}">
-              <h2 class="post-title">
-                {{ blog.name }}
-              </h2>
-              <h3 class="post-subtitle">
-                {{ blog.summary }}
-              </h3>
-            </a>
-            <p class="post-meta">
-              {{ blog.user_name }} 发表于 {{ blog.created_at|datetime}}
-              </p>
-          </div>
-          <hr>
-          {% endfor %}
-          <!-- Pager -->
-          <div class="clearfix">
-            <a class="btn btn-secondary float-right" href="#">Older Posts &rarr;</a>
-          </div>
-        </div>
+<div class="row">
+  <div class="col-sm-12 col-lg-12 col-md-12 mx-auto">
+    {% for blog in blogs %}
+    <div class="post-preview">
+      <a href="/blog/{{ blog.id }}">
+        <h2 class="post-title">
+          {{ blog.name }}
+        </h2>
+      </a>
+      <h3 class="post-subtitle markdown-body">
+        {{ blog.summary }}
+      </h3>
+
+      <p class="post-meta">
+        {{ blog.user_name }} 发表于 {{ blog.created_at|datetime}}
+      </p>
     </div>
+    <hr>
+    {% endfor %}
+  </div>
 </div>
+
 
 {% endblock %}
 

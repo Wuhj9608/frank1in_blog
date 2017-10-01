@@ -1,126 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>{% block title %} ? {% endblock %} - 无墨</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/github_markdown.css">
+    <link rel="stylesheet" href="/static/css/frank1in_blog.css">
+    <script src="/static/"
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--script src="https://use.fontawesome.com/2e713d1946.js"></script-->
 
-    <!-- Bootstrap core CSS -->
-    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='/static/fonts/Lora.css' rel='stylesheet' type='text/css'>
-    <link href='/static/fonts/Sans.css' rel='stylesheet' type='text/css'>
-    <!-- Custom styles for this template -->
-
-    {% block beforehead %}<!-- before head  -->{% endblock %}
-    <link href="/static/css/clean-blog.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="/static/css/darcula.css">
     <script src="/static/js/highlight.min.js"></script>
-    <link href="/static/css/github_markdown.css" rel="stylesheet">
-    <link href="/static/css/monokai_sublime.min.css" rel="stylesheet">
-    <script >hljs.initHighlightingOnLoad();</script>
-
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      .affix {
+        top: 0;
+        width: 100%;
+      }
+      .affix + .container-fluid {
+        padding-top: 70px;
+      }
+    </style>
   </head>
 
-  <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand" href="/">无墨</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-bars"></i>
+  <body style="background-color:#f0f5f5">
+  <div class="container-fluid" style="height:88px;background-color:#e1e1ea;">
+    <div class="container">
+    <div class="page-header" style="height:88px;">
+      <h1 style="text-decoration:none;
+                line-height:1;
+                -webkit-font-smoothing:antialiased;
+                -moz-osx-font-smoothing:grayscale;
+                font-size:37px;
+                letter-spacing:3px;
+                display:block;
+                position:absolute;
+                top:17px;">
+        <a href="#"  style="color:#555555;
+                text-decoration:none;
+                line-height:1;
+                -webkit-font-smoothing:antialiased;
+                -moz-osx-font-smoothing:grayscale;
+                font-size:37px;
+                letter-spacing:4px;
+                display:block;
+                position:absolute;">frank1in<span style="color:#4CAF50">.top</span></a>
+      </h1>
+      <div class="frank1in-right frank1in-wide toptext" style="font-size:16px;font-family:'Segoe UI',Arial,sans-serif">STAY HUNGRY, STAY FOOLISH</div>
+    </div>
+    </div>
+  </div>
+  <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="86" style="z-index:999;">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="post.html">Sample Post</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-          </ul>
+        <a class="navbar-brand glyphicon glyphicon-home" href="/"></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">博客</a></li>
+          <li><a href="#">实验室</a></li>
+          <li><a href="#">关于</a></li>
+          <li><a href="#">源码</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user">登录</span></a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in">注册</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" style="padding-top:20px;">
+    <div class="row">
+      <div class="col-sm-9 frank1in-main" style="background: #ffffff;">
+      {% block content %}{% endblock %}
+      </div>
+      <div class="col-sm-2 col-sm-offset-1 frank1in-sidebar">
+        <div class="frank1in-sidebar-module">
+          <img src="/static/img/andrew_ng.webp" class="img-responsive  center-block" alt="Anderw Ng"/>
+        </div>
+        <div class="frank1in-sidebar-module">
+          <h3 class="frank1in-panel-title">文章分类</h3>
+          <div class="frank1in-list"><a href="#">Coming soon...</a></div>
+          <div class="frank1in-list"><a href="#">Coming soon...</a></div>
+          <div class="frank1in-list"><a href="#">Coming soon...</a></div>
+          <div class="frank1in-list"><a href="#">Coming soon...</a></div>
+        </div>
+        <div class="frank1in-sidebar-module">
+          <h3 class="frank1in-panel-title">感谢</h3>
+          <div class="frank1in-list"><a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方网站</a></div>
+          <div class="frank1in-list"><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a></div>
+          <div class="frank1in-list"><a href="https://www.w3shools.com" target="_blank">W3schools</a></div>
+          <div class="frank1in-list"><a href="https://github.com/" target="_blank">Github</a></div>
         </div>
       </div>
-    </nav>
+    </div>
+  </div>
 
-    <!-- Page Header -->
-    {% if blog %}
-    {% else %}
-    <header class="masthead" style="background-image: url('/static/img/home-bg.jpg')">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="site-heading">
-              <h1>Clean Blog</h1>
-              <span class="subheading">A Blog Theme by Start Bootstrap</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    {% endif %}
-    <!-- Main Content -->
-    {% block content %}{% endblock %}
-      <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <ul class="list-inline text-center">
-              <li class="list-inline-item">
-                <a href="/manage">
-                  <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="/manage">
-                  <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="/manage">
-                  <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-            </ul>
-            <p class="copyright text-muted">Copyright &copy; 无墨 2017</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="/static/vendor/jquery/jquery.min.js"></script>
-    <script src="/static/vendor/popper/popper.min.js"></script>
-    <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="/static/js/clean-blog.min.js"></script>
-
-  </body>
-
+<footer class="frank1in-footer">
+  <p>Powered by <a href="#" style="color:#888888">frank1in_blog</a>. Copyright © 2017.</p>
+  <p><a href="#" style="color:#888888">frank1in.top</a>. All rights reserved.</p>
+</footer>
+</body>
 </html>

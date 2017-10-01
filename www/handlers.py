@@ -80,7 +80,23 @@ async def index(*, page='1'):
         'page': page,
         'blogs': blogs
     }
-##
+
+
+@get('/dev')
+async def get_dev(*, page='1'):
+    page_index = get_page_index(page)
+    num = await Blog.find_number('count(id)')
+    page = Page(num)
+    if num == 0:
+        blogs = []
+    else:
+        blogs = await Blog.find_all(orderBy='created_at desc', limit=(page.offset, page.limit))
+    return {
+        '__template__': 'dev_blogs.html',
+        'page': page,
+        'blogs': blogs
+    }
+
 
 @get('/blog/{id}')
 async def get_blog(id):
@@ -89,7 +105,7 @@ async def get_blog(id):
     for c in comments:
         c.html_content = text2html(c.content)
     blog.html_content = markdown2.markdown(blog.content,
-                                           extras=['code-friendly', 'fenced-code-blocks', 'footnotes', 'spoiler', 'tables'])
+                                           extras=['code-friendly', 'fenced-code-blocks', 'highlightjs-lang', 'footnotes', 'spoiler', 'tables'])
     return {
         '__template__': 'blog.html',
         'blog': blog,
@@ -302,6 +318,7 @@ async def api_create_blog(request, *, name, summary, content):
         raise APIValueError('summary', 'summary cannot be empty.')
     if not content or not content.strip():
         raise APIValueError('content', 'content cannot be empty.')
+
     blog = Blog(user_id=request.__user__.id, user_name=request.__user__.name, user_image=request.__user__.image, name=name.strip(), summary=summary.strip(), content=content.strip())
     await blog.save()
     return blog
@@ -319,6 +336,9 @@ async def api_update_blog(id, request, *, name, summary, content):
         raise APIValueError('content', 'content cannot be empty.')
     blog.name = name.strip()
     blog.summary = summary.strip()
+    html_summary = markdown2.markdown(summary.strip(),
+                                      extras=['code-friendly', 'fenced-code-blocks', 'highlightjs-lang',
+                                              'footnotes', 'spoiler', 'tables'])
     blog.content = content.strip()
     await blog.update()
     return blog
