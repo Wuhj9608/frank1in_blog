@@ -3,37 +3,26 @@
 {% block title %}日志{% endblock %}
 
 {% block beforehead %}
-
-<script>
-</script>
-
 {% endblock %}
 
 {% block content %}
 
-<div class="row">
+<div class="row" style="padding-left: 12px;">
   <div class="col-sm-12 col-lg-12 col-md-12 mx-auto">
     {% for blog in blogs %}
-    <div class="post-preview">
+    <h2>
       <a href="/blog/{{ blog.id }}">
-        <h2 class="post-title">
-          {{ blog.name }}
-        </h2>
+        {{ blog.name }}
       </a>
-      <h3 class="post-subtitle markdown-body">
-        {{ blog.summary }}
-      </h3>
-
-      <p class="post-meta">
-        {{ blog.user_name }} 发表于 {{ blog.created_at|datetime}}
-      </p>
-    </div>
+    </h2>
+    <h4>
+      {{ blog.summary }}
+    </h4>
+    <p class="frank1in-title-date" style="float: none;">
+      {{ blog.user_name }} 发表于 {{ blog.created_at|datetime}}
+    </p>
     <hr>
     {% endfor %}
   </div>
 </div>
-
-
 {% endblock %}
-
-

@@ -1,6 +1,12 @@
-.frank1in-right{float:right!important}
-.frank1in-hide-small{display:none!important}
-.frank1in-wide{letter-spacing:5px}
+.frank1in-right {
+    float:right!important
+}
+.frank1in-hide-small {
+    display:none!important
+}
+.frank1in-wide {
+    letter-spacing:5px
+}
 .frank1in-main {
     margin: 0 0 64px 0;
     border: 1px solid #dddddd;
@@ -24,9 +30,9 @@
     border-top: 1px solid #dddddd;
 }
 .frank1in-blog-title {
-
 }
 .frank1in-title-name {
+    padding-top: 16px;
     padding-left: 12px;
     font-size: 40px;
 }
