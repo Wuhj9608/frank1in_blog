@@ -82,22 +82,6 @@ async def index(*, page='1'):
     }
 
 
-@get('/dev')
-async def get_dev(*, page='1'):
-    page_index = get_page_index(page)
-    num = await Blog.find_number('count(id)')
-    page = Page(num)
-    if num == 0:
-        blogs = []
-    else:
-        blogs = await Blog.find_all(orderBy='created_at desc', limit=(page.offset, page.limit))
-    return {
-        '__template__': 'dev_blogs.html',
-        'page': page,
-        'blogs': blogs
-    }
-
-
 @get('/blog/{id}')
 async def get_blog(id):
     blog = await Blog.find(id)
