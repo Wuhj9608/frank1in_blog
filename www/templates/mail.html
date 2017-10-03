@@ -1,0 +1,31 @@
+{% extends '__base__.html' %}
+
+{% block title %}日志{% endblock %}
+
+{% block beforehead %}
+<script>
+    $(function () {
+        $('#send').click(function () {
+            var opt = {
+                type: 'POST',
+                url: '/api/mail/' + $('#to_addr').val()
+            }
+            alert($('#to_addr').val())
+            alert("请查看您的邮箱看是否收到，有可能在“垃圾邮件”里面");
+            $.ajax(opt);
+        });
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<form>
+    <label>你的邮箱：
+        <input id="to_addr" type="text" />
+    </label>
+    <label>要发送的内容：
+        <input id="content" type="text" />
+    </label>
+    <button id="send"> 发送 </button>
+</form>
+{% endblock %}

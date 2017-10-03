@@ -1,0 +1,39 @@
+{% extends '__base__.html' %}
+
+{% block title %}日志{% endblock %}
+
+{% block beforehead %}
+<script>
+    $(function () {
+        var ws = new WebSocket("ws://10.0.0.178:8080/"),
+            messages = $('#chat_history'),
+            send = $('#send');
+        send.click(function () {
+            send_text = $('#Msg').val();
+            ws.send(send_text);
+
+            ws.onmessage = function (event) {
+            var messages = document.getElementById('chat_history');
+                message = document.createElement('li'),
+                chat_text = document.createTextNode(event.data);
+            message.appendChild(chat_text);
+            messages.appendChild(message);
+            };
+        });
+
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<form>
+    <label>
+        <input id="name" type="text" placeholder="你的名字" />
+    </label>
+    <label>
+        <input id="Msg" type="text" placeholder="要发送的消息"/>
+    </label>
+    <a href="#" id="send">发送</a>
+</form>
+<ul id="chat_history"></ul>
+{% endblock %}
