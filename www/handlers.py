@@ -81,6 +81,16 @@ async def index(*, page='1'):
         'blogs': blogs
     }
 
+@get('/lab')
+def lab():
+    return { '__template__': 'lab.html'}
+
+
+@get('/lab/music')
+def music():
+    return { '__template__': 'music.html'}
+
+
 
 @get('/blog/{id}')
 async def get_blog(id):

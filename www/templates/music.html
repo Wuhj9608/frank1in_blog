@@ -1,0 +1,44 @@
+{% extends '__base__.html' %}
+
+{% block title %}日志{% endblock %}
+
+{% block beforehead %}
+<script>
+    $(function () {
+        var audio = $('#audio')[0],
+            number = $('#number'),
+            play = $('#play'),
+            pause = $('#pause');
+        play.click(function () {
+            audio.play();
+        });
+        pause.click(function () {
+            audio.pause();
+        });
+        number.change(function () {
+            alert(number.val());
+            audio.volume = number.val();
+        });
+
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<h2>网易云音乐插件：</h2>
+<p>0:</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=22724729&auto=0&height=66"></iframe>
+<p>1:</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=22724729&auto=0&height=32"></iframe>
+<h2>audio标签：</h2>
+<audio id="audio">
+    <source src="/static/Audio/test.mp3" type="audio/mp3" />
+</audio>
+<button id="play">播放</button>
+<button id="pause">暂停</button>
+<input type="number" id="number" min="0.0" max="1.0" step="0.1"/>
+<hr />
+<audio controls>
+    <source src="/static/Audio/test.mp3">
+</audio>
+{% endblock %}
