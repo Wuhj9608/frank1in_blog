@@ -102,6 +102,8 @@ def chat_room():
 @get('/blog/{id}')
 async def get_blog(id):
     blog = await Blog.find(id)
+    blog.view_count = blog.view_count + 1
+    await blog.update()
     comments = await Comment.find_all('blog_id=?', [id], orderBy='created_at desc')
     for c in comments:
         c.html_content = text2html(c.content)

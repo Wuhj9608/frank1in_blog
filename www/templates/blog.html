@@ -9,8 +9,12 @@
         <div class="row">
           <div class="col-sm-12 col-lg-12 col-md-12 mx-auto">
             <div class="frank1in-blog-title markdown-body">
-              <p class="frank1in-title-name">{{ blog.name }}</p>
-                <span class="frank1in-title-date"><a href="#">{{ blog.user_name }}</a> 发表于 {{ blog.created_at|datetime }}</span>
+                <p class="frank1in-title-name">{{ blog.name }}</p>
+                <p>
+                    <span class="frank1in-title-meta"><i class="glyphicon glyphicon-eye-open"></i> {{ blog.view_count }} 次阅读</span>
+
+                    <span class="frank1in-title-meta">{{ blog.user_name }} 发表于 {{ blog.created_at|datetime}}</span>
+                </p>
             </div>
           </div>
         </div>

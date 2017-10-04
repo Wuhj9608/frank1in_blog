@@ -11,15 +11,16 @@
   <div class="col-sm-12 col-lg-12 col-md-12 mx-auto">
     {% for blog in blogs %}
     <h2>
-      <a href="/blog/{{ blog.id }}">
+      <a href="/blog/{{ blog.id }}" class="frank1in-home-title-name">
         {{ blog.name }}
       </a>
     </h2>
-    <h4>
-      {{ blog.summary }}
-    </h4>
-    <p class="frank1in-title-date" style="float: none;">
-      {{ blog.user_name }} 发表于 {{ blog.created_at|datetime}}
+    <blockquote>
+      &nbsp;&nbsp;&nbsp;&nbsp;{{ blog.summary }}
+    </blockquote>
+    <p>
+      <span class="frank1in-title-meta"  style="float: none;">{{ blog.user_name }} 发表于 {{ blog.created_at|datetime}}</span>
+      <span class="frank1in-title-meta"  style="float: none;"><i class="glyphicon glyphicon-eye-open"></i> {{ blog.view_count }} 次阅读</span>
     </p>
     <hr>
     {% endfor %}

@@ -1,7 +1,7 @@
 import time
 import uuid
 
-from orm import Model, StringField, BooleanField, FloatField, TextField
+from orm import Model, StringField, BooleanField, FloatField, TextField, IntegerField
 
 
 def next_id():
@@ -29,6 +29,7 @@ class Blog(Model):
     user_image = StringField(ddl='varchar(500)')
     name = StringField(ddl='varchar(50)')
     summary = StringField(ddl='varchar(200)')
+    view_count = IntegerField()
     content = TextField()
     created_at = FloatField(default=time.time)
 
