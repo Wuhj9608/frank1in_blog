@@ -80,6 +80,18 @@ async def index(*, page='1'):
         'page': page,
         'blogs': blogs
     }
+@get('/about')
+async def about():
+    about = await Blog.find("00150686195861636a2497fc6bc4ad2b8b424b604fd7078000")
+    about.view_count = about.view_count + 1
+    await about.update()
+    about.html_content = markdown2.markdown(about.content,
+                                           extras=['code-friendly', 'fenced-code-blocks', 'highlightjs-lang',
+                                                   'footnotes', 'spoiler', 'tables'])
+    return {
+        '__template__': 'about.html',
+        'blog': about,
+    }
 
 @get('/lab')
 def lab():
