@@ -83,13 +83,20 @@ async def index(*, page='1'):
 
 @get('/lab')
 def lab():
-    return { '__template__': 'lab.html'}
+    return { '__template__': 'lab.html' }
 
 
 @get('/lab/music')
 def music():
-    return { '__template__': 'music.html'}
+    return { '__template__': 'music.html' }
 
+@get('/lab/mail')
+def mail():
+    return { '__template__': 'mail.html' }
+
+@get('/lab/chat_room')
+def chat_room():
+    return { '__template__': 'chat_room.html' }
 
 
 @get('/blog/{id}')
@@ -238,6 +245,37 @@ async def api_delete_comments(id, request):
         await c.remove()
     return dict(id=id)
 
+
+from email import encoders
+from email.header import Header
+from email.mime.text import MIMEText
+from email.utils import parseaddr, formataddr
+
+import smtplib
+
+def _format_addr(s):
+    name, addr = parseaddr(s)
+    return formataddr((Header(name, 'utf-8').encode(), addr))
+
+from_addr = configs['email']
+password = configs['email_passwd']
+smtp_server = configs['smtp_server']
+smtp_port = configs['smtp_port']
+email_name = configs['email_name']
+
+@post('/api/mail/{to}')
+async def api_mail_to(to):
+    msg = MIMEText('hello, send by python...', 'plain', 'utf-8')
+    msg['From'] = _format_addr('%s <%s>' % (email_name, from_addr))
+    msg['To'] = _format_addr('我 <%s>' % to)
+    msg['Subject'] = Header('来自 Python3 SMTP 的问候', 'utf-8').encode()
+
+    server = smtplib.SMTP_SSL(smtp_server, smtp_port)
+    server.set_debuglevel(1)
+    server.login(from_addr, password)
+    server.sendmail(from_addr, [to], msg.as_string())
+    server.quit()
+    return
 
 @get('/api/users')
 async def api_get_users(*, page='1'):

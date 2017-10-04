@@ -10,7 +10,6 @@
                 type: 'POST',
                 url: '/api/mail/' + $('#to_addr').val()
             }
-            alert($('#to_addr').val())
             alert("请查看您的邮箱看是否收到，有可能在“垃圾邮件”里面");
             $.ajax(opt);
         });
@@ -19,13 +18,21 @@
 {% endblock %}
 
 {% block content %}
+<hr />
+<h2>测试邮箱发送功能</h2>
+<p>该页面用来测试能否正常利用发送邮件</p>
+<p>如果你填了正确的邮箱和内容后点击“发送”却并未收到邮件，方便的话请联系我告诉我你的邮箱服务商</p>
+<p>已知不能正常接收的邮箱：gmail</p>
+<hr />
 <form>
-    <label>你的邮箱：
-        <input id="to_addr" type="text" />
-    </label>
-    <label>要发送的内容：
-        <input id="content" type="text" />
-    </label>
-    <button id="send"> 发送 </button>
+    <h3>你的邮箱帐号：</h3>
+    <input type="email" id="to_addr" required="required" placeholder="你的邮箱" />
+    <hr />
+    <h3>邮件：</h3>
+    <input type="text" id="email_header" required placeholder="主题" />
+    <hr />
+    <textarea id="email_content" rows="16" required="required" placeholder="要发送的内容" style="resize:none;"></textarea>
+    <hr />
+    <input type="submit" id="send" value="发送" />
 </form>
 {% endblock %}
